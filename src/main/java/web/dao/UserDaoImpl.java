@@ -24,15 +24,17 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public void saveUser(User user) {
-        if(user.getId() == 0){
-            entityManager.persist(user);
-        } else {
-            entityManager.merge(user);
-        }
+        entityManager.persist(user);
     }
 
     @Override
     public void deleteUser(int id) {
         entityManager.remove(showUserById(id));
+    }
+
+    @Override
+    public void updateUser(int id, User user) {
+        user.setId(id);
+        entityManager.merge(user);
     }
 }
