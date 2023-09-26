@@ -2,12 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Страница пользователя</title>
+    <title>Изменения пользователя</title>
 </head>
 <body>
-<h2>Заполните информацию о пользователе</h2>
+<h2>Поменяйте информацию о пользователе</h2>
 <br>
-<form th:action="@{/save}" th:object="${user}" th:method="post">
+<form th:action="@{/update}" th:object="${user}" th:method="post">
     <input type="hidden" th:value="${user.id}" th:attr=" name='id'"/>
     <label for="name">Имя</label>
     <input type="text" th:field="*{name}" name="name" id="name" />

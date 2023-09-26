@@ -28,29 +28,29 @@ public class UserController {
     private String addNewUser(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "edit";
+        return "new";
     }
 
     @PostMapping("/save")
-    private String save(@ModelAttribute("user") User user){
+    private String saveUser(@ModelAttribute("user") User user){
         userService.saveUser(user);
         return "redirect:/";
     }
 
     @GetMapping("/edit")
-    private String editUser(@RequestParam("id") int id, Model model) {
+    private String getFormEditUser(@RequestParam("id") int id, Model model) {
         model.addAttribute("user", userService.showUserById(id));
-        return "update";
+        return "edit";
     }
 
     @GetMapping("/delete")
-    private String delete(@RequestParam("id") int id) {
+    private String deleteUser(@RequestParam("id") int id) {
         userService.deleteUser(id);
         return "redirect:/";
     }
 
     @PostMapping("/update")
-    public String update(@RequestParam("id") int id, @ModelAttribute("user") User user) {
+    public String updateUser(@RequestParam("id") int id, @ModelAttribute("user") User user) {
         userService.updateUser(id, user);
         return "redirect:/";
     }
